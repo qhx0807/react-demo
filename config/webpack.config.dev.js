@@ -144,12 +144,6 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              plugins: [
-                // 引入样式为 css
-                // ['import', { libraryName: 'antd', style: 'css' }],
-                // 改动: 引入样式为 less
-                 ['import', { libraryName: 'antd', style: true }],
-              ],
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
@@ -169,8 +163,6 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
-                  modules: true,
-                  localIdentName: "[name]__[local]___[hash:base64:5]",
                 },
               },
               {
@@ -226,7 +218,10 @@ module.exports = {
                 },
               },
               {
-                loader: require.resolve('less-loader') // compiles Less to CSS
+                loader: require.resolve('less-loader'), // compiles Less to CSS
+                options: {
+                  javascriptEnabled: true,
+                }
               }
             ],
           },
