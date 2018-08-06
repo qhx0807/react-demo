@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
-// import styles from './Login.css'
-// import styles from './Login.less'
-import styles from './Login.css'
+import './Login.less'
 
 class Login extends Component {
   constructor (props) {
@@ -13,18 +11,18 @@ class Login extends Component {
   }
   render () {
     return (
-      <div>
-        <div className={ styles.loginBox }>1212</div>
+      <div className="login">
+        <div className="loginBox">1212</div>
         <p className="loginBox">1212</p>
-        <Button type="primary">Login</Button>
+        <Button type="primary" onClick={this.clickHandler}>Login</Button>
       </div>
     )
   }
   componentDidMount () {
-    console.log(styles)
+    
   }
   clickHandler = () => {
-    alert(this.state.a)
+    this.props.history.push('/about')
   }
 }
 
