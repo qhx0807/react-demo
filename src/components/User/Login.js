@@ -12,9 +12,8 @@ class Login extends Component {
   render () {
     return (
       <div className="login">
-        <div className="loginBox">1212</div>
-        <p className="loginBox">1212</p>
-        <Button type="primary" onClick={this.clickHandler}>Login</Button>
+        <div className="">121</div>
+        <Button>Login</Button>
       </div>
     )
   }
