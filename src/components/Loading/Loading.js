@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Spin } from 'antd'
-import './Loading.less'
+import styles from './Loading.less'
 
 class Loading extends Component {
   render () {
     return (
-      <div className="loading-warp">
+      <div className={styles.loadingWarp}>
         <Spin ></Spin>
       </div>
     )

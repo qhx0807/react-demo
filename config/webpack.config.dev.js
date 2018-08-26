@@ -144,10 +144,17 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
+              
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
               cacheDirectory: true,
+              plugins: [
+                // 引入样式为 css
+                ['import', { libraryName: 'antd', style: 'css' }],
+                // 引入样式为 less
+                //  ['import', { libraryName: 'antd', style: true }],
+              ],
             },
           },
           // "postcss" loader applies autoprefixer to our CSS.
@@ -157,6 +164,7 @@ module.exports = {
           // in development "style" loader enables hot editing of CSS.
           {
             test: /\.css$/,
+            include: /node_modules|antd\.css/,
             use: [
               require.resolve('style-loader'),
               {
@@ -188,7 +196,8 @@ module.exports = {
             ],
           },
           {
-            test: /\.less$/,
+            test: /\.(css|less)$/,
+            exclude: /node_modules|antd\.css/,
             use: [
               require.resolve('style-loader'),
               {
@@ -196,12 +205,14 @@ module.exports = {
                 options: {
                   importLoaders: 1,
                   modules: true,
-                  localIdentName: "[name]__[local]___[hash:base64:5]",
+                  localIdentName: '[name]__[local]__[hash:base64:5]',
                 },
               },
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
+                  // Necessary for external CSS imports to work
+                  // https://github.com/facebookincubator/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
                     require('postcss-flexbugs-fixes'),
@@ -218,10 +229,7 @@ module.exports = {
                 },
               },
               {
-                loader: require.resolve('less-loader'), // compiles Less to CSS
-                options: {
-                  javascriptEnabled: true,
-                }
+                loader: require.resolve('less-loader')
               }
             ],
           },
