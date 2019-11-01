@@ -1,0 +1,25 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "no-multi-spaces": 1,
+    "react/jsx-space-before-closing": 1, 
+    "jsx-quotes": ["error", "prefer-single"],
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-boolean-value": 1,
+    "react/no-string-refs": 1,
+    "react/self-closing-comp": 1,
+    "react/jsx-no-bind": 1,
+    "react/sort-comp": 1,
+    "react/jsx-pascal-case": 1,
+    "space-before-function-paren": 1,
+    "keyword-spacing": 1,
+    "semi": ["error", "never"],
+    "no-trailing-spaces": "error",
+    "no-irregular-whitespace": "error",
+    "array-bracket-spacing": ["error", "always"],
+    "indent": ["error", "tab"],
+    "no-multiple-empty-lines": "error",
+    "object-curly-spacing": ["error", "always"],
+    "eol-last": ["error", "always"]
+  }
+}
