@@ -7,18 +7,16 @@ function User (props) {
 	const addNum = useCallback(() => setN(N + 1), [ N ])
 
 	useEffect(() => {
-		const interval = setInterval(addNum, 1000)
-		return () => clearInterval(interval)
-	}, [ addNum ]) // 第二个参数 https://zh-hans.reactjs.org/docs/hooks-reference.html#useeffect
+		console.log(1)
+	}, [ N ]) // 第二个参数 https://zh-hans.reactjs.org/docs/hooks-reference.html#useeffect
 
 	return (
 		<div>
 			<h1>{props.count}</h1>
 			<h1 style={{ color: 'red' }}>{N}</h1>
 
-			<button onClick={ addNum }>
-        Click me
-			</button>
+			<button onClick={ addNum }> Click me hooks</button>
+			<button onClick={ props.add }> Click me reduxActions</button>
 		</div>
 	)
 }
@@ -29,4 +27,11 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(User)
+const mapDispatchToProps = (dispatch) => {
+	return {
+		add: () => dispatch({ type: 'INCREMENT' }),
+		mins: () => dispatch({ type: 'DECREMENT' })
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(User)
