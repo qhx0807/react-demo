@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { connect } from 'react-redux'
 
 function User (props) {
 	const [ N, setN ] = useState(1)
 
-	const addNum = () => {
-		setN(N + 1)
-	}
+	const addNum = useCallback(() => setN(N + 1), [ N ])
 
 	useEffect(() => {
 		const interval = setInterval(addNum, 1000)
@@ -18,7 +16,7 @@ function User (props) {
 			<h1>{props.count}</h1>
 			<h1 style={{ color: 'red' }}>{N}</h1>
 
-			<button onClick={() => setN(N + 1)}>
+			<button onClick={ addNum }>
         Click me
 			</button>
 		</div>

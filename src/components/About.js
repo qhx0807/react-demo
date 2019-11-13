@@ -21,8 +21,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-	let arr = [ 1, 2, 3 ]
-	console.log(arr)
 	return {
 		add: () => dispatch({ type: 'INCREMENT' }),
 		mins: () => dispatch({ type: 'DECREMENT' })

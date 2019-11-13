@@ -7,32 +7,32 @@ const About = lazy(() => import('./components/About'))
 const User = lazy(() => import('./components/User'))
 
 function App () {
-  return (
-    <Provider store={store}>
-      <Suspense fallback={null}>
-        <Router>
-          <div className='nav'>
-            <nav>
-              <ul>
-                <li>
-                  <Link to='/'>Home</Link>
-                </li>
-                <li>
-                  <Link to='/about'>About</Link>
-                </li>
-                <li>
-                  <Link to='/user'>User</Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <Route path='/' exact component={Home} />
-          <Route path='/about' component={About} />
-          <Route path='/user' component={User} />
-        </Router>
-      </Suspense>
-    </Provider>
-  )
+	return (
+		<Provider store={store}>
+			<Suspense fallback={null}>
+				<Router>
+					<div className='nav'>
+						<nav>
+							<ul>
+								<li>
+									<Link to='/'>Home</Link>
+								</li>
+								<li>
+									<Link to='/about'>About</Link>
+								</li>
+								<li>
+									<Link to='/user'>User</Link>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<Route path='/' exact component={Home} />
+					<Route path='/about' component={About} />
+					<Route path='/user' component={User} />
+				</Router>
+			</Suspense>
+		</Provider>
+	)
 }
 
 export default App
